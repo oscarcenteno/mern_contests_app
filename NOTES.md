@@ -98,3 +98,5 @@ git push --set-upstream origin 02_why_react
 React = WHAT
 ReactDOM = WHY
 https://eng.galoy.io/react-intro/
+
+## Install React Developer tools for Chrome
