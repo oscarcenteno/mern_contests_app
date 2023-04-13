@@ -77,3 +77,8 @@ npm run lint
 git init
 git remote add origin https://github.com/oscarcenteno/mern_contests_app.git
 git branch -M main
+git add .
+git commit -m "initial commit"
+git push --set-upstream origin main
+git checkout -b 01_getting_started main
+git commit -m "git commands to finish 'getting started'"
