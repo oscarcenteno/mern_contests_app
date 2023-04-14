@@ -1,16 +1,16 @@
 /* eslint-disable react/jsx-key */
 import ContestPreview from "./contest-preview";
 import { useState, useEffect } from "react";
-import { fecthContests } from "../api-client";
+import { fetchContests } from "../api-client";
 
 const ContestList = ({ initialContests }) => {
   const [contests, setContests] = useState(initialContests);
 
   useEffect(() => {
     // get data
-    fecthContests().then((response) => {
+    fetchContests().then((contests) => {
       // update state
-      setContests(response.contests);
+      setContests(contests);
     });
   }, []);
 
