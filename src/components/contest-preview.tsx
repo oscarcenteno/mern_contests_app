@@ -1,5 +1,10 @@
-/* eslint-disable react/jsx-key */
-const ContestPreview = ({ contest }) => {
+import * as React from "react";
+
+type ContestPreviewParams = React.FC<{
+  contest: Object;
+}>;
+
+const ContestPreview: ContestPreviewParams = ({ contest }) => {
   return (
     <div className="contest-preview">
       <div className="category">{contest.categoryName}</div>
