@@ -53,6 +53,7 @@ npx tsnd src/dev/load-test-data.ts
 
 ## Web contents packing: Configure ReactJS and Webpack
 
+https://eng.galoy.io/creating-a-development-environment-for-node-and-react/
 npm i react react-dom
 npm i webpack webpack-cli
 npm i ts-loader
@@ -79,6 +80,23 @@ git remote add origin https://github.com/oscarcenteno/mern_contests_app.git
 git branch -M main
 git add .
 git commit -m "initial commit"
+
 git push --set-upstream origin main
 git checkout -b 01_getting_started main
 git commit -m "git commands to finish 'getting started'"
+
+git push --set-upstream origin 01_getting_started
+
+Create pull request:
+https://github.com/oscarcenteno/mern_contests_app/pull/new/01_getting_started
+
+git checkout -b 02_why_react main
+git push --set-upstream origin 02_why_react
+
+# 2 Wny React
+
+React = WHAT
+ReactDOM = WHY
+https://eng.galoy.io/react-intro/
+
+## Install React Developer tools for Chrome
