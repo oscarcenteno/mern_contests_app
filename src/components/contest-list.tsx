@@ -8,10 +8,9 @@ const ContestList = ({ initialContests }) => {
 
   useEffect(() => {
     // get data
-    fetchContests().then((contests) => {
-      // update state
+    /**   fetchContests().then((contests) => {
       setContests(contests);
-    });
+    });*/
   }, []);
 
   return (
