@@ -1,7 +1,5 @@
 const env = process.env;
 
-console.log("Config...");
-
 // server
 export const PORT = env.PORT ?? "8080";
 export const HOST = env.HOST ?? "localhost";

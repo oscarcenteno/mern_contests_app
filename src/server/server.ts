@@ -1,18 +1,25 @@
 import express from "express";
 const server = express();
-import os from "node:os";
-import config from "./config";
 
 server.use(express.static("dist"));
 
 server.set("view engine", "ejs");
 
-server.use("/", (req, res) => {
+// all api endpoints under /api route
+import apiRouter from "./api-router";
+server.use("/api", apiRouter);
+
+import serverRender from "./render";
+server.get("/", async (req, res) => {
+  const { initialMarkup, initialData } = await serverRender();
   res.render("index", {
-    initialContent: "<em>Loading...</em>",
+    initialMarkup,
+    initialData,
   });
 });
 
+import config from "./config";
+import os from "node:os";
 server.listen(config.PORT, config.HOST, () => {
   console.info(
     `Express server is listening at ${config.SERVER_URL}`,
