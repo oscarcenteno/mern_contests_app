@@ -1,12 +1,16 @@
 import Header from "./header";
 import ContestList from "./contest-list";
+import Contest from "./contest";
 import { useState } from "react";
 
 const App = ({ initialData }) => {
-  const [page, setPage] = useState("contestList");
+  type ValidPages = "contestList" | "contest";
+  const [page, setPage] = useState<ValidPages>("contestList");
+  const [currentContestId, setCurrentContestId] = useState();
 
-  const navigateToContest = () => {
+  const navigateToContest = (contestId) => {
     setPage("contest");
+    setCurrentContestId(contestId);
   };
 
   const pageContent = () => {
@@ -19,7 +23,7 @@ const App = ({ initialData }) => {
           />
         );
       case "contest":
-        return "something else";
+        return <Contest id={currentContestId} />;
       default:
         return "...";
     }

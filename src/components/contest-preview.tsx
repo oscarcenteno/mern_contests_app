@@ -10,7 +10,7 @@ const ContestPreview: ContestPreviewParams = ({ contest, onClick }) => {
     event.preventDefault;
 
     // Navigate to a new View using a state element to render the contest.
-    onClick();
+    onClick(contest.id);
   };
 
   return (
