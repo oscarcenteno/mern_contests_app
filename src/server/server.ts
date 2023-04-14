@@ -2,12 +2,15 @@ import express from "express";
 const server = express();
 import os from "node:os";
 import config from "./config";
+import apiRouter from "./api-router";
 
 server.use(express.static("dist"));
 
 server.set("view engine", "ejs");
 
-server.use("/", (req, res) => {
+server.use("/api", apiRouter);
+
+server.get("/", (req, res) => {
   res.render("index", {
     initialContent: "<em>Loading...</em>",
   });

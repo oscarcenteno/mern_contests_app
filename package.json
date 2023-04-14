@@ -6,8 +6,9 @@
   "scripts": {
     "lint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:server": "tsnd src/server/server.ts",
+    "dev:server": "tsnd src/server/backend_server.ts",
     "db:server": "docker-compose up",
+    "db:init": "tsnd src/dev/load-test-data.ts",
     "dev:bundler": "webpack -w --mode=development"
   },
   "keywords": [],
