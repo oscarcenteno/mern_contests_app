@@ -1,20 +1,13 @@
 import Header from "./header";
-import { useState } from "react";
+import ContestList from "./contest-list";
+//import { useState } from "react";
 
-const App = () => {
-  const [counter, setCounter] = useState(0);
-
+const App = ({ initialData }) => {
   return (
     <div className="container">
       <Header message="Naming contests" />
-      <button
-        type="submit"
-        onClick={() => {
-          setCounter(counter + 1);
-        }}
-      >
-        {counter}
-      </button>
+
+      <ContestList contests={initialData.contests} />
     </div>
   );
 };

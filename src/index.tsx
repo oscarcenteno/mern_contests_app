@@ -9,7 +9,5 @@ const root = createRoot(container);
 import axios from "axios";
 import { API_SERVER_URL } from "./public-config";
 axios.get(`${API_SERVER_URL}/contests`).then((response) => {
-  console.log(response.data);
+  root.render(<App initialData={{ contests: response.data.contests }} />);
 });
-
-root.render(<App />);
