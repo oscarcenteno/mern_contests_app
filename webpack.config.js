@@ -1,3 +1,5 @@
+const webpack = require("webpack"); // dynamic call (can be called within a function). Not the case with "import"
+
 module.exports = {
   entry: "./src/index.tsx",
   resolve: {
@@ -14,4 +16,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      HOST: "localhost",
+      PORT: "8080",
+    }),
+  ],
 };

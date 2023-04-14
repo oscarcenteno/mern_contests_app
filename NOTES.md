@@ -100,3 +100,15 @@ ReactDOM = WHY
 https://eng.galoy.io/react-intro/
 
 ## Install React Developer tools for Chrome
+
+## db init
+
+docker db is not persisted, so this is the script to initialize it
+npm run db:init
+
+# 3 Working with data
+
+calling apis
+npm i axios
+CORS middleware
+npm i cors
