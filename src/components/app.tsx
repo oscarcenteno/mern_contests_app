@@ -4,22 +4,26 @@ import { useState, useEffect } from "react";
 
 const App = ({ initialData }) => {
   type ValidPages = "contestList" | "contest";
-  const [page, setPage] = useState<ValidPages>("contestList");
-  const [currentContestId, setCurrentContestId] = useState();
+  const [page, setPage] = useState<ValidPages>(
+    initialData.currentContest ? "contest" : "contestList",
+  );
+  const [currentContest, setCurrentContest] = useState<object | undefined>(
+    initialData.currentContest,
+  );
 
   // to be able to navigate between pages
   useEffect(() => {
     window.onpopstate = (event) => {
       const newPage = event.state?.contestId ? "contest" : "contestList";
       setPage(newPage);
-      setCurrentContestId(event.state?.contestId);
+      setCurrentContest({ id: event.state?.contestId });
     };
   }, []);
 
   const navigateToContest = (contestId) => {
     window.history.pushState({ contestId }, "", `/contests/${contestId}`);
     setPage("contest");
-    setCurrentContestId(contestId);
+    setCurrentContest({ id: contestId });
   };
 
   const pageContent = () => {
@@ -32,7 +36,7 @@ const App = ({ initialData }) => {
           />
         );
       case "contest":
-        return <Contest id={currentContestId} />;
+        return <Contest initialContest={currentContest} />;
       default:
         return "...";
     }

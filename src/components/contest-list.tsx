@@ -1,18 +1,10 @@
 /* eslint-disable react/jsx-key */
 import ContestPreview from "./contest-preview";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "./header";
 
 const ContestList = ({ initialContests, onContestClick }) => {
   const [contests, setContests] = useState(initialContests);
-
-  useEffect(() => {
-    // get data
-    /**import { fetchContests } from "../api-client";
-   fetchContests().then((contests) => {
-      setContests(contests);
-    });*/
-  }, []);
 
   return (
     <>

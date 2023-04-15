@@ -11,7 +11,7 @@ router.get("/contests", async (req, res) => {
   const contests = await client
     .collection("contests")
     .find()
-    .project({ id: 1, categgoryName: 1, contestName: 1, _id: 0 })
+    .project({ id: 1, categoryName: 1, contestName: 1, _id: 0 })
     .toArray();
 
   // get data from mongodb
