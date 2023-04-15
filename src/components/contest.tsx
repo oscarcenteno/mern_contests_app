@@ -2,15 +2,8 @@ import { useState, useEffect } from "react";
 import { fetchContest } from "../api-client";
 import Header from "./header";
 
-class ContestDTO {
-  id: any;
-  names: [{ id: string; name: string }];
-  contestName: any;
-  description: any;
-}
-
 const Contest = ({ initialContest, onContestListClick }) => {
-  const [contest, setContest] = useState<ContestDTO>(initialContest);
+  const [contest, setContest] = useState(initialContest);
   useEffect(() => {
     if (!contest.names) {
       fetchContest(contest.id).then((contest) => setContest(contest));
@@ -39,6 +32,12 @@ const Contest = ({ initialContest, onContestListClick }) => {
     }
   };
 
+  function handleNewNameSubmit(event) {
+    event.preventDefault();
+    // using the DOM API to create a new name
+    const newName = event.target.newName.value;
+  }
+
   return (
     <>
       <Header message={contest.contestName} />
@@ -48,6 +47,22 @@ const Contest = ({ initialContest, onContestListClick }) => {
 
         <div className="title">Proposed names</div>
         <div className="body">{renderNames()}</div>
+
+        <div className="title">Propose a new name</div>
+        <div className="body">
+          <form onSubmit={handleNewNameSubmit}>
+            <input
+              type="text"
+              name="newName"
+              placeholder="New name here"
+              value={contest.name}
+              onChange={(event) =>
+                setContest({ ...contest, name: event.target.value })
+              }
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
         <a href="/" className="link" onClick={handleClickContestList}>
           Contest List
         </a>
