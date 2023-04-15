@@ -5,3 +5,8 @@ export const fetchContests = async () => {
   const response = await axios.get(`${API_SERVER_URL}/contests`);
   return response.data.contests;
 };
+
+export const fetchContest = async (contestId) => {
+  const response = await axios.get(`${API_SERVER_URL}/contests/${contestId}`);
+  return response.data.contest;
+};

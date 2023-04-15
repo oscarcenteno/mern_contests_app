@@ -10,8 +10,8 @@ import apiRouter from "./api-router";
 server.use("/api", apiRouter);
 
 import serverRender from "./render";
-server.get("/", async (req, res) => {
-  const { initialMarkup, initialData } = await serverRender();
+server.get(["/", "/contests/:contestId"], async (req, res) => {
+  const { initialMarkup, initialData } = await serverRender(req);
   res.render("index", {
     initialMarkup,
     initialData,
