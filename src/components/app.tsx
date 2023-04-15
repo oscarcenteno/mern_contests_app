@@ -7,7 +7,9 @@ const App = ({ initialData }) => {
   const [page, setPage] = useState<ValidPages>(
     initialData.currentContest ? "contest" : "contestList",
   );
-  const [currentContest, setCurrentContest] = useState<object | undefined>(
+  type CurrentContest = object | undefined;
+
+  const [currentContest, setCurrentContest] = useState<CurrentContest>(
     initialData.currentContest,
   );
 
