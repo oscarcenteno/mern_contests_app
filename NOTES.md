@@ -112,3 +112,7 @@ calling apis
 npm i axios
 CORS middleware
 npm i cors
+
+# Using Genius ChatGPT
+
+npm i --save-dev @types/react
