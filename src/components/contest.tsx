@@ -40,7 +40,7 @@ const Contest = ({ initialContest, onContestListClick }) => {
       contestId: contest.id,
       newNameValue: newName,
     });
-    console.log(updatedContest);
+    setContest(updatedContest);
   };
 
   return (
