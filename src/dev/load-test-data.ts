@@ -81,7 +81,7 @@ async function main() {
 
   console.info("Inserted Contests:", resp.insertedCount);
 
-  stopClient();
+  await stopClient();
 }
 
-main();
+main().then(() => console.log("db:init DONE"));

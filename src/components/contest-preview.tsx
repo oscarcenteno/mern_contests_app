@@ -1,7 +1,7 @@
 import * as React from "react";
 
 type ContestPreviewParams = React.FC<{
-  contest: Object;
+  contest: any;
   onClick: any;
 }>;
 

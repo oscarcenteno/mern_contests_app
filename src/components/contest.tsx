@@ -36,6 +36,7 @@ const Contest = ({ initialContest, onContestListClick }) => {
     event.preventDefault();
     // using the DOM API to create a new name
     const newName = event.target.newName.value;
+    console.log(newName);
   }
 
   return (
@@ -51,15 +52,7 @@ const Contest = ({ initialContest, onContestListClick }) => {
         <div className="title">Propose a new name</div>
         <div className="body">
           <form onSubmit={handleNewNameSubmit}>
-            <input
-              type="text"
-              name="newName"
-              placeholder="New name here"
-              value={contest.name}
-              onChange={(event) =>
-                setContest({ ...contest, name: event.target.value })
-              }
-            />
+            <input type="text" name="newName" placeholder="New name here" />
             <button type="submit">Submit</button>
           </form>
         </div>
