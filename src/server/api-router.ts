@@ -58,4 +58,24 @@ router.put("/contests/:contestId", async (req, res) => {
   res.send({ updatedContest });
 });
 
+router.post("/contests", async (req, res) => {
+  const client = await connectClient();
+
+  const { contestName, categoryName, description } = req.body;
+
+  const doc = await client.collection("contests").insertOne({
+    id: contestName.toLocaleLowerCase().replace(/\s/g, "-"),
+    contestName,
+    categoryName,
+    description,
+    names: [],
+  });
+
+  const insertedContest = await client.collection("contests").findOne({
+    _id: doc.insertedId,
+  });
+
+  res.send({ insertedContest });
+});
+
 export default router;
