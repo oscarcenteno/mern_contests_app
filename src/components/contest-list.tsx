@@ -1,8 +1,7 @@
-/* eslint-disable react/jsx-key */
 import ContestPreview from "./contest-preview";
 import { useState, useEffect } from "react";
 import Header from "./header";
-import { fetchContests } from "../api-client";
+import { fetchContests, addNewContest } from "../api-client";
 
 const ContestList = ({ initialContests, onContestClick }) => {
   const [contests, setContests] = useState(initialContests ?? []);
@@ -12,6 +11,21 @@ const ContestList = ({ initialContests, onContestClick }) => {
       setContests(contests);
     });
   }, [initialContests]);
+
+  const handleNewContestSubmit = async (event) => {
+    event.preventDefault();
+    // using the DOM API to create a new contest
+    const contestName = event.target.newContestName.value;
+    const categoryName = event.target.newCategoryName.value;
+    const description = event.target.newDescription.value;
+    const newContest = await addNewContest({
+      contestName,
+      categoryName,
+      description,
+    });
+
+    setContests([...contests, newContest]);
+  };
 
   return (
     <>
@@ -27,6 +41,21 @@ const ContestList = ({ initialContests, onContestClick }) => {
             />
           );
         })}
+      </div>
+
+      <div className="add-new-contest">
+        <div className="header">Propose a new name</div>
+
+        <form onSubmit={handleNewContestSubmit}>
+          <input type="text" name="newContestName" placeholder="Contest name" />
+          <input
+            type="text"
+            name="newCategoryName"
+            placeholder="Category name"
+          />
+          <textarea name="newDescription" placeholder="Description" />
+          <button type="submit">Submit</button>
+        </form>
       </div>
     </>
   );
